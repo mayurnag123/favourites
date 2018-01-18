@@ -1,0 +1,42 @@
+<html>
+<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<script src = "index.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+</head>
+<body ng-app = "myApp" ng-controller = "myCtrl">
+
+<table style="height: 16px; width: 599px;">
+<tbody>
+<tr>
+<td style="width: 114px;" ng-click = "isFav = false"><span style="color: #57a2e4;">/r/analog</span></td>
+<td style="width: 1084px;" ng-click = "isFav = true"><span style="color: #57a2e4;">favourites({{fav.length}})</span></td>
+</tr>
+</tbody>
+</table>
+
+<hr />
+<div ng-show = "!isFav">
+<div style="margin-left: 20%;margin-right:20%;border:1px solid" ng-repeat = "promo in promos">
+<p><i class="fa fa-heart" ng-click = "addToFav($index)" style = "margin-left: 13%;margin-top: 2%;color: red;position: absolute;" aria-hidden="true"></i><img src="{{promo.data.thumbnail}}" alt="" width="500" height="500" style="display: block;margin: auto;"/></p>
+<p style="text-align: center;">{{promo.data.title}}</p>
+<hr />
+<p style="text-align: center">{{promo.data.author}}</p>
+</div>
+</div>
+
+<div ng-show = "isFav">
+<div style="margin-left: 20%;margin-right:20%;border:1px solid" ng-repeat = "promo in fav">
+<p><i class="fa fa-trash" ng-click = "removeFromFav($index)" style = "margin-left: 13%;margin-top: 2%;color: red;position: absolute;" aria-hidden="true"></i><img src="{{promo.data.thumbnail}}" alt="" width="500" height="500" style="display: block;margin: auto;"/></p>
+<p style="text-align: center;">{{promo.data.title}}</p>
+<hr />
+<p style="text-align: center">{{promo.data.author}}</p>
+</div>
+<div ng-show = "fav.length = 0;text-align:center">There are no favourites</div>
+</div>
+
+	
+</body>
+</html>
